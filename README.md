@@ -57,10 +57,20 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 3. Use `npm run start` to run development server
 
 ### Deploy
-1. Use `npm run build` to transpile TS to JS for production.
+##### General
+Use `npm run build` to transpile TS to JS for production.
    - The outut `build/dist` can be deployed, e.g. using serve. See [Deployment](https://create-react-app.dev/docs/deployment/) and [Create a Production Build](https://create-react-app.dev/docs/production-build)
    - No output means success! When using VS Code, errors will be shown before.
 
+##### Heroku
+The Heroku `Node.js` buildpack runs build and start automatically.
+Build is the same npm script in this case, but we need to tell it to start the transpiled JS files.
+
+```json
+   "start": "node build/dist/index.js",
+   "start-dev": "react-scripts start",
+   "build": "tsc",
+```
 
 ### Using bundles
 Some bundles come with type declarations in `index.d.ts` files. If not, get declarations from [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped).
